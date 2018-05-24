@@ -35,7 +35,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['stderr'],
+            'channels' => ['single'],
         ],
 
         'single' => [
