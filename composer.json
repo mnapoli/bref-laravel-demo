@@ -1,0 +1,37 @@
+{
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.2",
+        "fideloper/proxy": "^4.0",
+        "laravel/framework": "5.6.*",
+        "laravel/tinker": "^1.0",
+        "mnapoli/bref": "~0.2.7"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.0",
+        "nunomaduro/collision": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

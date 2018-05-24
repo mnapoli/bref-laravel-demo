@@ -1,0 +1,6 @@
+hooks:
+    build:
+        - 'rm bootstrap/cache/*.php'
+        - 'php artisan cache:clear'
+        - 'php artisan view:cache'
+#        - 'APP_STORAGE="/tmp" php artisan config:cache'

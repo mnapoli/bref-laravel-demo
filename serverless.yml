@@ -1,0 +1,35 @@
+service: laravel-demo
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: eu-west-3 # Paris
+
+package:
+  exclude:
+    - '*'
+    - '**'
+  include:
+    - handler.js
+    - bref.php
+    - '.bref/**'
+    - 'app/**'
+    - 'bootstrap/**'
+    - 'config/**'
+    - 'resources/**'
+    - 'routes/**'
+    - 'storage/framework/views/**'
+    - 'vendor/**'
+
+functions:
+  # By default we create one "main" function
+  main:
+    handler: handler.handle
+    timeout: 20
+    # The function will match all HTTP URLs
+    events:
+      - http: 'ANY /'
+      - http: 'ANY {proxy+}'
+    # Laravel configuration using environment variables:
+    environment:
+#      APP_STORAGE: '/tmp'
