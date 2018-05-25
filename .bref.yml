@@ -1,6 +1,6 @@
 hooks:
     build:
+        # Use the `.env.production` file as `.env`
+        - 'rm .env && cp .env.production .env'
         - 'rm bootstrap/cache/*.php'
-        - 'php artisan cache:clear'
-        - 'php artisan view:cache'
-#        - 'APP_STORAGE="/tmp" php artisan config:cache'
+        - 'php artisan config:cache'
