@@ -31,4 +31,5 @@ functions:
       - http: 'ANY {proxy+}'
     # Laravel configuration using environment variables:
     environment:
+      APP_DIR: '.'
       APP_STORAGE: '/tmp/storage'
