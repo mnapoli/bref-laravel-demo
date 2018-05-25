@@ -62,6 +62,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            input {
+                text-align: right;
+                width: 50px;
+            }
         </style>
     </head>
     <body>
@@ -82,13 +87,21 @@
                     Laravel
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <hr>
+
+                <h2>
+                    Exchange your dollars
+                </h2>
+
+                <form action="/dev" method="get">
+                    <p>Enter some $$: <input type="text" name="money" value="{{ $dollars }}"></p>
+                    @if ($euros !== null)
+                        <p>That is worth {{ number_format($euros, 2) }} euros.</p>
+                    @endif
+                    @if ($error)
+                        <p>There was an error fetching the latest exchange rate :(</p>
+                    @endif
+                </form>
             </div>
         </div>
     </body>

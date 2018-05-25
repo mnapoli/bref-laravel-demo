@@ -11,6 +11,28 @@
 |
 */
 
-Route::get('/dev', function () {
-    return view('welcome');
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Swap\Laravel\Facades\Swap;
+
+Route::redirect('/', '/dev', 302);
+
+Route::any('/dev', function (Request $request) {
+    $dollars = $request->get('money', null);
+
+    if ($dollars !== null) {
+        try {
+            /** @var \Exchanger\ExchangeRate $rate */
+            $rate = Swap::latest('USD/EUR');
+            $euros = $dollars * $rate->getValue();
+        } catch (\Exception $e) {
+            $error = true;
+        }
+    }
+
+    return view('welcome', [
+        'dollars' => $dollars,
+        'euros' => $euros ?? null,
+        'error' => $error ?? false,
+    ]);
 });
