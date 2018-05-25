@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Swap\Laravel\Facades\Swap;
 
@@ -27,6 +28,9 @@ Route::any('/dev', function (Request $request) {
             $euros = $dollars * $rate->getValue();
         } catch (\Exception $e) {
             $error = true;
+            Log::error('Error fetching exchange rates: ' . $e->getMessage(), [
+                'exception' => $e,
+            ]);
         }
     }
 
