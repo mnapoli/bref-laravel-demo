@@ -63,7 +63,7 @@ return [
     |
     */
     'services' => [
-        'google' => true,
+        'cryptonator' => true,
     ],
 
     /*
