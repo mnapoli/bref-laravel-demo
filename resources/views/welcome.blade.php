@@ -95,7 +95,7 @@
                     Exchange your dollars
                 </h2>
 
-                <form action="/dev" method="get">
+                <form action="" method="get">
                     <p>Enter some $$: <input type="text" name="money" value="{{ $dollars }}"></p>
                     @if ($euros !== null)
                         <p>That is worth {{ number_format($euros, 2) }} euros.</p>

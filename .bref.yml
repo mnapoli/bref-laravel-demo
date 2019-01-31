@@ -1,6 +1,0 @@
-hooks:
-    build:
-        # Use the `.env.production` file as `.env`
-        - 'rm .env && cp .env.production .env'
-        - 'rm bootstrap/cache/*.php'
-        - 'php artisan config:cache'

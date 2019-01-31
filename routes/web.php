@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Swap\Laravel\Facades\Swap;
 
-Route::redirect('/', '/dev', 302);
-
-Route::any('/dev', function (Request $request) {
+Route::any('/', function (Request $request) {
     $dollars = $request->get('money', null);
 
     if ($dollars !== null) {
